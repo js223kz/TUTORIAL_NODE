@@ -28,7 +28,17 @@ bookRouter.route('/')
     });
 bookRouter.route('/:id')
     .get(function (req, res) {
-        res.send('hello single book');
+        var id = req.params.id;
+        res.render('book', {
+            nav: [{
+                Link: '/Books',
+                Text: 'Books'
+        }, {
+                Link: '/Authors',
+                Text: 'Authors'
+        }],
+            book: books[id];
+        });
     });
 
 module.exports = bookRouter;
